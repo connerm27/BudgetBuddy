@@ -8,16 +8,6 @@
 import UIKit
 
 
-// Transaction Structure
-struct Transaction {
-    // Budget Category
-    var budgetCategory:String
-    // Brief Description
-    var briefDescription:String
-    // Transaction Amount
-    var transactionamount:String
-    
-}
 
 // Classes
 // Style Transaction Cell

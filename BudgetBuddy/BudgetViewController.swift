@@ -7,13 +7,7 @@
 
 import UIKit
 
-// Budget Category -- Structure
-struct BudgetCategory {
-    
-    var category: String
-    var amount: String
-    
-}
+
 
 // Class for Table View Cell
 class BudgetCell:UITableViewCell {
