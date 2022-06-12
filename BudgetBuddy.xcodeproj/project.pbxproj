@@ -18,6 +18,7 @@
 		5CB81D7F27EA53860005154B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB81D7D27EA53860005154B /* Main.storyboard */; };
 		5CB81D8127EA53880005154B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CB81D8027EA53880005154B /* Assets.xcassets */; };
 		5CB81D8427EA53880005154B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CB81D8227EA53880005154B /* LaunchScreen.storyboard */; };
+		5CCB38C028565CF1003BE4EF /* DBHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCB38BF28565CF1003BE4EF /* DBHelper.swift */; };
 		5CF801802829DEDB004733BC /* ProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF8017F2829DEDB004733BC /* ProgressBar.swift */; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		5CB81D8027EA53880005154B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5CB81D8327EA53880005154B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5CB81D8527EA53880005154B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CCB38BF28565CF1003BE4EF /* DBHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DBHelper.swift; sourceTree = "<group>"; };
 		5CF8017F2829DEDB004733BC /* ProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -70,6 +72,7 @@
 			children = (
 				5CB81D7727EA53860005154B /* AppDelegate.swift */,
 				5CB81D7927EA53860005154B /* SceneDelegate.swift */,
+				5CCB38BF28565CF1003BE4EF /* DBHelper.swift */,
 				5CB81D7D27EA53860005154B /* Main.storyboard */,
 				5C5C9EA0280606FA000B88D4 /* TestViewController.swift */,
 				5CB81D7B27EA53860005154B /* ViewController.swift */,
@@ -163,6 +166,7 @@
 				5CF801802829DEDB004733BC /* ProgressBar.swift in Sources */,
 				5C09788727FDE3E90055109E /* BudgetViewController.swift in Sources */,
 				5CB81D7A27EA53860005154B /* SceneDelegate.swift in Sources */,
+				5CCB38C028565CF1003BE4EF /* DBHelper.swift in Sources */,
 				5C9CBA5A2800F6C100A0DC39 /* Items.swift in Sources */,
 				5C09788527FDE38D0055109E /* DashboardViewController.swift in Sources */,
 			);
