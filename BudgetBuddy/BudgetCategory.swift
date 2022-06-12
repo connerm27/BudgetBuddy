@@ -12,10 +12,15 @@ class BudgetCategory {
     
     var category: String
     var amount: String
+    static var id: Int = 0
+    
     
     init(category:String, amount:String) {
         self.category = category
         self.amount = amount
+   
+        
+        
     }
     
 }

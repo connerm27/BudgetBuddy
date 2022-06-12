@@ -42,7 +42,7 @@ class DBHelper {
     
     
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS person(Id INTEGER PRIMARY KEY, name TEXT, age INTEGER);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS budget(Id INTEGER PRIMARY KEY, name TEXT, age INTEGER);"
         
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
