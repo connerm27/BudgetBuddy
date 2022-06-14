@@ -15,14 +15,17 @@ struct Transaction {
     var briefDescription:String
     // Transaction Amount
     var transactionamount:String
+    // Transaction ID
+    var transactionId:Int
+    
     
     //Initialization
-    init(budgetCategory:String, briefDescription:String, transactionamount:String) {
+    init(budgetCategory:String, briefDescription:String, transactionamount:String, transactionId:Int) {
         self.budgetCategory = budgetCategory
         self.briefDescription = briefDescription
         self.transactionamount = transactionamount
-        
-        
+        self.transactionId = transactionId
+
     }
     
 }

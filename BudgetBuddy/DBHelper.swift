@@ -20,6 +20,7 @@ class DBHelper {
     let dbPath: String = "myDb.sqlite"
     var db:OpaquePointer?
     
+    // Open database
     func openDatabase() -> OpaquePointer? {
         
         let fileURL = try! FileManager.default.url(for: .documentDirectory, in:.userDomainMask, appropriateFor: nil, create: false).appendingPathComponent(dbPath)
@@ -40,7 +41,7 @@ class DBHelper {
     }
     
     
-    
+    // Creates Budget Category Table if not already existing
     func createTable() {
         let createTableString = "CREATE TABLE IF NOT EXISTS budget_category(Id INTEGER PRIMARY KEY, category TEXT, amount TEXT);"
         
@@ -61,7 +62,7 @@ class DBHelper {
     }
     
     
-    // insert function
+    // insert function, for inserting a Budget Category into the DB
     func insert(category:String, amount:String) {
        
         
@@ -85,7 +86,7 @@ class DBHelper {
         sqlite3_finalize(insertStatement)
 }
 
-   // -> [BudgetCategory] 
+   // for reading in budget categorys to [ITEMS] model
     func read() {
         
         // SQL Query Statement selects from database
@@ -130,7 +131,7 @@ class DBHelper {
     }
     
     
-    
+    // For deleting members of budget_category table by id
     func deleteById(id:Int) {
         let deleteStatementString = "DELETE FROM budget_category WHERE Id = ?;"
         var deleteStatement: OpaquePointer? = nil
@@ -155,7 +156,51 @@ class DBHelper {
     }
     
     
+    // Creates transactions table if it doesn't already exist
+    func createTableTransactions() {
+        let createTableString = "CREATE TABLE IF NOT EXISTS transactions(Id INTEGER PRIMARY KEY, category TEXT, description TEXT, amount TEXT);"
+        
+        var createTableStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
+            if sqlite3_step(createTableStatement) == SQLITE_DONE {
+                print("Budget Category table created.")
+            } else {
+                print("Budget Category Table could not be created")
+            }
+        } else {
+            print("CREATE TABLE statement could not be prepared.")
+        }
+        
+        sqlite3_finalize(createTableStatement)
+        
+        
+    }
     
-    
+    // insert function, for transactions records into transactions database
+    func insertTransaction(category:String, description:String, amount:String) {
+       
+        
+        let insertStatementString = "INSERT INTO transactions(category, description, amount) VALUES (?, ?, ?);"
+        var insertStatement: OpaquePointer? = nil
+        if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
+            sqlite3_bind_text(insertStatement, 1, (category as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (amount as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 3, (amount as NSString).utf8String, -1, nil)
+            
+            if sqlite3_step(insertStatement) == SQLITE_DONE {
+                print("Successfully inserted row")
+            } else {
+                print("Error: Could not insert row")
+            }
+            
+            
+        } else {
+            print ("Error: INSERT statement could not be prepared")
+        }
+        
+        sqlite3_finalize(insertStatement)
+}
+
+
     
 }

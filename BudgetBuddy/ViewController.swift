@@ -179,6 +179,7 @@ class ViewController: UIViewController {
                 
         view.addGestureRecognizer(tap)
         
+       
     }
     
     

@@ -18,6 +18,9 @@ class BudgetCell:UITableViewCell {
     
 }
 
+// db variable
+var db:DBHelper = DBHelper()
+
 
 class BudgetViewController: UIViewController, UITableViewDataSource {
     
@@ -58,9 +61,7 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
     // Dynamic row in table
     var numberOfRows: Int = 0
     
-    // db variable
-    var db:DBHelper = DBHelper()
-    
+  
     
     // target action, this will show addToBudgetForm
     @IBAction func addToBudgetButton(_ sender: Any) {
@@ -175,6 +176,7 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
                 
         view.addGestureRecognizer(tap)
         
+        // Read in Database
         db.read()
         
 
