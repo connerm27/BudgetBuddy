@@ -200,6 +200,52 @@ class DBHelper {
         
         sqlite3_finalize(insertStatement)
 }
+    
+    
+    // for reading in budget categories to [TransactionSingle] model
+     func readTransactions() {
+         
+         // SQL Query Statement selects from database
+         let queryStatementString = "SELECT * FROM transactions;"
+         
+         var queryStatement: OpaquePointer? = nil
+
+         
+         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
+             while sqlite3_step(queryStatement) == SQLITE_ROW {
+                 let id = sqlite3_column_int(queryStatement, 0)
+                 let category = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                 let description = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
+                 let amount = String(describing: String(cString: sqlite3_column_text(queryStatement, 3)))
+                 
+                 // determine if record is already in array
+                 var isInArray = false
+                 for i in TransactionSingle.sharedInstance.array {
+                     if(i.transactionId == Int(id)) {
+                         isInArray = true
+                     }
+                 }
+                 
+                 if(isInArray == false) {
+                     TransactionSingle.sharedInstance.array.append(Transaction(budgetCategory: category, briefDescription: description, transactionamount: amount, transactionId: Int(id)))
+                 }
+                 
+                 print("Query Result: ")
+                 print("\(id) | \(category) | \(description) | \(amount)")
+             }
+             
+             
+         } else {
+             
+             print("Error: select statement could not be prepared")
+             
+         }
+         
+         sqlite3_finalize(queryStatement)
+     
+         
+         
+     }
 
 
     
