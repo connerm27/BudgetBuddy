@@ -58,7 +58,8 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
     // Dynamic row in table
     var numberOfRows: Int = 0
     
-    
+    // db variable
+    var db:DBHelper = DBHelper()
     
     
     // target action, this will show addToBudgetForm
@@ -81,6 +82,9 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
     }
     
     @IBAction func addToBudgetSubmit(_ sender: Any) {
+        
+        // Read data from db, puts data in shared instance
+        
         // Get Values from fields as vars
         let BudgetCategoryText:String = budgetCategoryValue.text ?? "N/A"
         let AmountPerMonthText:String = AmountPerMonthValue.text ?? "0"
@@ -103,10 +107,15 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
         if(flag == false) {
         
         // Create Budget Category Object
-        let budgetCategoryInstance = BudgetCategory(category: BudgetCategoryText, amount: AmountPerMonthText)
+            let budgetCategoryInstance = BudgetCategory(category: BudgetCategoryText, amount: AmountPerMonthText, id:0)
         
         // Add object to share array instance
-        Items.sharedInstance.array.append(budgetCategoryInstance)
+            db.insert(category: budgetCategoryInstance.category, amount: budgetCategoryInstance.amount)
+            
+        
+            
+        // Read in new object to shared instance array
+            db.read()
             
         //Dynamically add row to table
         addRow()
