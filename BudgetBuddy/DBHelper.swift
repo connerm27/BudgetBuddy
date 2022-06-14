@@ -42,7 +42,7 @@ class DBHelper {
     
     
     func createTable() {
-        let createTableString = "CREATE TABLE IF NOT EXISTS budget(Id INTEGER PRIMARY KEY, name TEXT, age INTEGER);"
+        let createTableString = "CREATE TABLE IF NOT EXISTS budget_category(Id INTEGER PRIMARY KEY, category TEXT, amount TEXT);"
         
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
@@ -65,7 +65,7 @@ class DBHelper {
     func insert(category:String, amount:String) {
        
         
-        let insertStatementString = "INSERT INTO budget(category, amount) VALUES (?, ?);"
+        let insertStatementString = "INSERT INTO budget_category(category, amount) VALUES (?, ?);"
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             sqlite3_bind_text(insertStatement, 1, (category as NSString).utf8String, -1, nil)
@@ -89,7 +89,7 @@ class DBHelper {
     func read() {
         
         // SQL Query Statement selects from database
-        let queryStatementString = "SELECT * FROM person;"
+        let queryStatementString = "SELECT * FROM budget_category;"
         
         var queryStatement: OpaquePointer? = nil
 
