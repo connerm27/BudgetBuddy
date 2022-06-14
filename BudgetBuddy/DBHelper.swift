@@ -93,17 +93,25 @@ class DBHelper {
         
         var queryStatement: OpaquePointer? = nil
 
-        // empty array of Person Objects
-       // var psns: [Person] = []
         
         if sqlite3_prepare_v2(db, queryStatementString, -1, &queryStatement, nil) == SQLITE_OK {
             while sqlite3_step(queryStatement) == SQLITE_ROW {
-                let id = sqlite3_column_int(queryStatement, 2)
-                let category = String(describing: String(cString: sqlite3_column_text(queryStatement, 0)))
-                let amount = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let id = sqlite3_column_int(queryStatement, 0)
+                let category = String(describing: String(cString: sqlite3_column_text(queryStatement, 1)))
+                let amount = String(describing: String(cString: sqlite3_column_text(queryStatement, 2)))
                 
-                // AFter getting data for each column, add to psns array
-                Items.sharedInstance.array.append(BudgetCategory(category: category, amount: amount, id: Int(id)))
+                // determine if record is already in array
+                var isInArray = false
+                for i in Items.sharedInstance.array {
+                    if(i.id == Int(id)) {
+                        isInArray = true
+                    }
+                }
+                
+                if(isInArray == false) {
+                    Items.sharedInstance.array.append(BudgetCategory(category: category, amount: amount, id: Int(id)))
+                }
+                
                 print("Query Result: ")
                 print("\(id) | \(category) | \(amount)")
             }
@@ -124,7 +132,7 @@ class DBHelper {
     
     
     func deleteById(id:Int) {
-        let deleteStatementString = "DELETE FROM persons WHERE Id = ?;"
+        let deleteStatementString = "DELETE FROM budget_category WHERE Id = ?;"
         var deleteStatement: OpaquePointer? = nil
         
         if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {

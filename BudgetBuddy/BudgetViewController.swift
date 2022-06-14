@@ -175,6 +175,8 @@ class BudgetViewController: UIViewController, UITableViewDataSource {
                 
         view.addGestureRecognizer(tap)
         
+        db.read()
+        
 
     }
     
@@ -228,7 +230,9 @@ extension BudgetViewController {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return numberOfRows
+      //  return numberOfRows
+        return Items.sharedInstance.array.count
+        
     }
 
 
@@ -250,6 +254,7 @@ extension BudgetViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
+        db.deleteById(id: Items.sharedInstance.array[indexPath.row].id)
         Items.sharedInstance.removeItem(removeIndex: indexPath.row)
         removeRow()
         tableView.deleteRows(at: [indexPath], with: .fade)
