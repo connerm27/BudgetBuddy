@@ -254,6 +254,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITableV
     }
     
     func tableView(_ tableView:UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        db.deleteTransactionById(id: TransactionSingle.sharedInstance.array[indexPath.row].transactionId)
         TransactionSingle.sharedInstance.removeItem(removeIndex: indexPath.row)
         removeRow()
         tableView.deleteRows(at: [indexPath], with: .fade)

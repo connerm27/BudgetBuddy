@@ -164,9 +164,9 @@ class DBHelper {
         var createTableStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, createTableString, -1, &createTableStatement, nil) == SQLITE_OK {
             if sqlite3_step(createTableStatement) == SQLITE_DONE {
-                print("Budget Category table created.")
+                print("Transactions table created.")
             } else {
-                print("Budget Category Table could not be created")
+                print("Transactions Table could not be created")
             }
         } else {
             print("CREATE TABLE statement could not be prepared.")
@@ -185,7 +185,7 @@ class DBHelper {
         var insertStatement: OpaquePointer? = nil
         if sqlite3_prepare_v2(db, insertStatementString, -1, &insertStatement, nil) == SQLITE_OK {
             sqlite3_bind_text(insertStatement, 1, (category as NSString).utf8String, -1, nil)
-            sqlite3_bind_text(insertStatement, 2, (amount as NSString).utf8String, -1, nil)
+            sqlite3_bind_text(insertStatement, 2, (description as NSString).utf8String, -1, nil)
             sqlite3_bind_text(insertStatement, 3, (amount as NSString).utf8String, -1, nil)
             
             if sqlite3_step(insertStatement) == SQLITE_DONE {
