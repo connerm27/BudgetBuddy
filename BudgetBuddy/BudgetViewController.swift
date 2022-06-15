@@ -229,10 +229,11 @@ extension BudgetViewController {
     }
     
     
+    // Table view stubs
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-      //  return numberOfRows
+      //  return instance array count
         return Items.sharedInstance.array.count
         
     }

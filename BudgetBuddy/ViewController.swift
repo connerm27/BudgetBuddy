@@ -104,24 +104,34 @@ class ViewController: UIViewController {
         
         if(valueSelected != "") {
             // Create transactio object from form data
-            let transactionInstance = Transaction(budgetCategory: valueSelected, briefDescription: briefDescriptionText, transactionamount: tAmountText)
+            let transactionInstance = Transaction(budgetCategory: valueSelected, briefDescription: briefDescriptionText, transactionamount: tAmountText, transactionId:0)
             
-            // Add object to singleton array
-            TransactionSingle.sharedInstance.array.append(transactionInstance)
+            
+            // Insert Object into database
+            db.insertTransaction(category: transactionInstance.budgetCategory, description: transactionInstance.briefDescription, amount: transactionInstance.transactionamount)
+            
+            // Read in the new object to the shared instance array
+            db.readTransactions()
+            
             
             //Dynamically add row to table
             addRow()
         } else if(numberOfRows == 1) {
             // handles no action, one category showing
             // Create transaction object from form data
-            let transactionInstance = Transaction(budgetCategory: TransactionSingle.sharedInstance.array[0].budgetCategory, briefDescription: briefDescriptionText, transactionamount: tAmountText)
+            let transactionInstance = Transaction(budgetCategory: TransactionSingle.sharedInstance.array[0].budgetCategory, briefDescription: briefDescriptionText, transactionamount: tAmountText, transactionId:0)
             
-            // Add object to singleton array
-            TransactionSingle.sharedInstance.array.append(transactionInstance)
+            // Insert Object into database
+            db.insertTransaction(category: transactionInstance.budgetCategory, description: transactionInstance.briefDescription, amount: transactionInstance.transactionamount)
+            
+            // Read in the new object to the shared instance array
+            db.readTransactions()
             
             //Dynamically add row to table
             addRow()
             
+        } else {
+            // handles if "nothing" is present, transaction field(s) are empty
         }
         
         
@@ -179,6 +189,9 @@ class ViewController: UIViewController {
                 
         view.addGestureRecognizer(tap)
         
+        db.readTransactions()
+        
+        
        
     }
     
@@ -217,7 +230,10 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITableV
     
     // TABLE VIEW
     func tableView(_ tableView:UITableView, numberOfRowsInSection section:Int) -> Int {
-        return numberOfRows
+        // return number of rows in shared instance
+        return TransactionSingle.sharedInstance.array.count
+        
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
