@@ -19,6 +19,18 @@ class TransactionSingle {
         
     }
     
+    func removeCategory(category:String) {
+        var c:Int = 0
+        for i in array {
+            if(i.budgetCategory == category) {
+                array.remove(at:c)
+                c = c-1
+            }
+            c+=1
+        }
+    }
+    
+    
     
     
 }

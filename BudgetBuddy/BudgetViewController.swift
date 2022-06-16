@@ -257,9 +257,27 @@ extension BudgetViewController {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle,
                    forRowAt indexPath: IndexPath) {
+        // Delete record from budget-category table
         db.deleteById(id: Items.sharedInstance.array[indexPath.row].id)
+        
+        // save category of same object
+        let c = Items.sharedInstance.array[indexPath.row].category
+        
+        // delete the accompanying transactions related to the category that was delted
+        db.deleteAccompanying(category: c)
+        
+        
+        // Remove accompanying items from shared array
+        TransactionSingle.sharedInstance.removeCategory(category:c)
+
+        
+        // Remove the object from the shared array
         Items.sharedInstance.removeItem(removeIndex: indexPath.row)
+        
+    
+
         removeRow()
+        
         tableView.deleteRows(at: [indexPath], with: .fade)
         
         tableView.reloadData()

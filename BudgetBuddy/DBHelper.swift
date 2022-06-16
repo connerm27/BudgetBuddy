@@ -141,6 +141,7 @@ class DBHelper {
             sqlite3_bind_int(deleteStatement, 1, Int32(id))
             if sqlite3_step(deleteStatement) == SQLITE_DONE {
                 print("Successfully deleted row")
+                
             } else {
                 print("Error: could not delete row")
             }
@@ -269,6 +270,35 @@ class DBHelper {
         }
         
         sqlite3_finalize(deleteStatement)
+        
+        
+    }
+    
+    // Function that will delete accompanying transactions
+    func deleteAccompanying(category:String) {
+        
+        let deleteStatementString = "DELETE FROM transactions WHERE category = ?;"
+        var deleteStatement: OpaquePointer? = nil
+        
+        if sqlite3_prepare_v2(db, deleteStatementString, -1, &deleteStatement, nil) == SQLITE_OK {
+            sqlite3_bind_text(deleteStatement, 1, (category as NSString).utf8String, -1, nil)
+            if sqlite3_step(deleteStatement) == SQLITE_DONE {
+                print("Successfully deleted row(s) in transaction table")
+            } else {
+                print("Error: could not delete row")
+            }
+            
+            
+        } else {
+            print("Error: could not prepare delete statement")
+            
+        }
+        
+        sqlite3_finalize(deleteStatement)
+        
+        
+        
+        
         
         
     }
