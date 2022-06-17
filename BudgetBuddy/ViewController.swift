@@ -51,7 +51,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var picker: UIPickerView!
     
     
-    // Value selected from picker
+    // Picker value
     var valueSelected:String = ""
     
     
@@ -113,25 +113,17 @@ class ViewController: UIViewController {
             // Read in the new object to the shared instance array
             db.readTransactions()
             
+            tableView.reloadData()
+            
             
             //Dynamically add row to table
-            addRow()
-        } else if(numberOfRows == 1) {
-            // handles no action, one category showing
-            // Create transaction object from form data
-            let transactionInstance = Transaction(budgetCategory: TransactionSingle.sharedInstance.array[0].budgetCategory, briefDescription: briefDescriptionText, transactionamount: tAmountText, transactionId:0)
+            //addRow()
             
-            // Insert Object into database
-            db.insertTransaction(category: transactionInstance.budgetCategory, description: transactionInstance.briefDescription, amount: transactionInstance.transactionamount)
-            
-            // Read in the new object to the shared instance array
-            db.readTransactions()
-            
-            //Dynamically add row to table
-            addRow()
-            
+            print("\(valueSelected)")
         } else {
             // handles if "nothing" is present, transaction field(s) are empty
+            print("emtpy")
+            print("\(valueSelected)")
         }
         
         
@@ -177,6 +169,11 @@ class ViewController: UIViewController {
         self.picker.delegate = self
         self.picker.dataSource = self
         
+        // Picker initial value
+        if (Items.sharedInstance.array.count > 0) {
+            valueSelected = Items.sharedInstance.array[0].category
+        }
+        
        
        // tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
@@ -198,7 +195,6 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("viewWillAppear(_:) called")
-        
         
         // Reload table view
         tableView.reloadData()
@@ -268,7 +264,7 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource, UITableV
     func tableView(_ tableView:UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         db.deleteTransactionById(id: TransactionSingle.sharedInstance.array[indexPath.row].transactionId)
         TransactionSingle.sharedInstance.removeItem(removeIndex: indexPath.row)
-        removeRow()
+       // removeRow()
         tableView.deleteRows(at: [indexPath], with: .fade)
         
         tableView.reloadData()
@@ -299,6 +295,8 @@ extension ViewController {
         
     }
     
+    // REMOVE CODE
+    /*
     // Function to add row dynamically to transaction table view
     private func addRow() {
         numberOfRows += 1
@@ -314,7 +312,7 @@ extension ViewController {
         
     
     }
-    
+    */
     
     
 }
