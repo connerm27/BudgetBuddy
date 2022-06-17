@@ -61,8 +61,12 @@ class DashboardViewController: UIViewController {
         // Table View Data Source
         tableView.dataSource = self
         
-        // Read in Database
+        // Read in Budget categories databas
         db.read()
+        
+        // Read in Transaction Databas
+        db.readTransactions()
+        
         
         // Reload the table
         tableView.reloadData()

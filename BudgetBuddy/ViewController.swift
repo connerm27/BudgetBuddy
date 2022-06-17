@@ -195,6 +195,18 @@ class ViewController: UIViewController {
        
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("viewWillAppear(_:) called")
+        
+        
+        // Reload table view
+        tableView.reloadData()
+        
+        
+        
+    }
+    
     
     
 
