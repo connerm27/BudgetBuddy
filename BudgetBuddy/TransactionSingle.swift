@@ -11,14 +11,18 @@ import Foundation
 // By each tab within our app
 class TransactionSingle {
     
+    // Shared instance Singleton
     static let sharedInstance = TransactionSingle()
+    // Shared array of transaction objects
     var array = [Transaction]()
     
+    // Removes an transaction from the array
     func removeItem(removeIndex:Int) {
         array.remove(at:removeIndex)
         
     }
     
+    // Removes associated transactions with categorys (when you need to delete a category, delete associated transactions
     func removeCategory(category:String) {
         var c:Int = 0
         for i in array {

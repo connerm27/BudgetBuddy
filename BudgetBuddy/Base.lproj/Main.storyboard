@@ -374,6 +374,57 @@
             </objects>
             <point key="canvasLocation" x="1163.768115942029" y="431.91964285714283"/>
         </scene>
+        <!--Root View Controller-->
+        <scene sceneID="A6Q-na-4fr">
+            <objects>
+                <tableViewController id="eII-wp-ekm" customClass="HistoryTableViewController" customModule="BudgetBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="ACR-Yy-sRb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <button key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="ZEd-c1-ebg">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <state key="normal" title="Button"/>
+                            <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title=""/>
+                        </button>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="23" id="VMv-LA-kfZ">
+                                <rect key="frame" x="0.0" y="88.5" width="414" height="23"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="VMv-LA-kfZ" id="eRc-HJ-dgB">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="23"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="eII-wp-ekm" id="BZQ-tL-s9c"/>
+                            <outlet property="delegate" destination="eII-wp-ekm" id="dkh-rO-VeL"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Root View Controller" id="G00-36-jd1"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tD0-Hy-ECf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="240.57971014492756" y="-656.25"/>
+        </scene>
+        <!--History View Controller-->
+        <scene sceneID="CAW-tO-CGT">
+            <objects>
+                <navigationController id="2Tl-BT-O6c" customClass="HistoryViewController" customModule="BudgetBuddy" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rC9-N8-oNS">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="eII-wp-ekm" kind="relationship" relationship="rootViewController" id="svu-QV-2EL"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4il-kZ-cGu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-649" y="-656"/>
+        </scene>
         <!--Dashboard-->
         <scene sceneID="MFL-UN-bEY">
             <objects>
@@ -480,10 +531,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="of1-x8-iXD">
-                                <rect key="frame" x="23" y="70" width="46" height="31"/>
+                                <rect key="frame" x="20" y="67" width="46" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="arrow.uturn.backward" catalog="system"/>
+                                <connections>
+                                    <segue destination="eII-wp-ekm" kind="show" id="Xjk-R3-efc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KpS-hZ-Utz"/>
@@ -499,6 +553,7 @@
                         <imageReference key="selectedImage" image="house.fill" catalog="system" symbolScale="large"/>
                     </tabBarItem>
                     <toolbarItems/>
+                    <navigationItem key="navigationItem" id="bvz-Jy-hVP"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="message" destination="Jcv-YM-rwG" id="ezJ-GB-KOc"/>
@@ -515,6 +570,7 @@
         <scene sceneID="LSt-eG-QD5">
             <objects>
                 <tabBarController id="E8X-g7-Vtq" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="m4N-Tq-9zp"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oRu-6A-80z">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -531,8 +587,12 @@
             <point key="canvasLocation" x="157" y="74"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="svu-QV-2EL"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="arrow.uturn.backward" catalog="system" width="128" height="112"/>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
         <image name="doc.text.fill" catalog="system" width="115" height="128"/>
         <image name="house.fill" catalog="system" width="128" height="106"/>
         <image name="tray.full.fill" catalog="system" width="128" height="88"/>
