@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		5C09788527FDE38D0055109E /* DashboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C09788427FDE38D0055109E /* DashboardViewController.swift */; };
 		5C09788727FDE3E90055109E /* BudgetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C09788627FDE3E90055109E /* BudgetViewController.swift */; };
+		5C4FF99A285FFDD1002FACEA /* PastBudget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C4FF999285FFDD1002FACEA /* PastBudget.swift */; };
 		5C57D10A28186ED100123823 /* TransactionSingle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C57D10928186ED100123823 /* TransactionSingle.swift */; };
 		5C5C9EA1280606FA000B88D4 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C5C9EA0280606FA000B88D4 /* TestViewController.swift */; };
 		5C9CBA5A2800F6C100A0DC39 /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C9CBA592800F6C100A0DC39 /* Items.swift */; };
@@ -29,6 +30,7 @@
 /* Begin PBXFileReference section */
 		5C09788427FDE38D0055109E /* DashboardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DashboardViewController.swift; sourceTree = "<group>"; };
 		5C09788627FDE3E90055109E /* BudgetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BudgetViewController.swift; sourceTree = "<group>"; };
+		5C4FF999285FFDD1002FACEA /* PastBudget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastBudget.swift; sourceTree = "<group>"; };
 		5C57D10928186ED100123823 /* TransactionSingle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionSingle.swift; sourceTree = "<group>"; };
 		5C5C9EA0280606FA000B88D4 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		5C9CBA592800F6C100A0DC39 /* Items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Items.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 				5CB81D7727EA53860005154B /* AppDelegate.swift */,
 				5CB81D7927EA53860005154B /* SceneDelegate.swift */,
 				5CCB38BF28565CF1003BE4EF /* DBHelper.swift */,
+				5C4FF999285FFDD1002FACEA /* PastBudget.swift */,
 				5CCB38C128566098003BE4EF /* Transaction.swift */,
 				5CCB38C3285660A8003BE4EF /* BudgetCategory.swift */,
 				5C9CBA592800F6C100A0DC39 /* Items.swift */,
@@ -180,6 +183,7 @@
 				5C57D10A28186ED100123823 /* TransactionSingle.swift in Sources */,
 				5CB81D7827EA53860005154B /* AppDelegate.swift in Sources */,
 				5CF801802829DEDB004733BC /* ProgressBar.swift in Sources */,
+				5C4FF99A285FFDD1002FACEA /* PastBudget.swift in Sources */,
 				5C09788727FDE3E90055109E /* BudgetViewController.swift in Sources */,
 				5CB81D7A27EA53860005154B /* SceneDelegate.swift in Sources */,
 				5CCB38C028565CF1003BE4EF /* DBHelper.swift in Sources */,
